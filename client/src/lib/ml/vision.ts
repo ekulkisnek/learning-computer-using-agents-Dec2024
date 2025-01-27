@@ -39,8 +39,14 @@ export function useVisionProcessor(config: VisionProcessorConfig = {
   };
 
   const detectUIElements = async (tensor: tf.Tensor) => {
-    if (!model) await initializeModel();
-    const predictions = await model!.predict(tensor) as tf.Tensor;
+    if (!model) {
+      await initializeModel();
+      if (!model) {
+        console.warn('Model not available - skipping detection');
+        return [];
+      }
+    }
+    const predictions = await model.predict(tensor) as tf.Tensor;
     const elements = await predictions.array();
     return elements;
   };
