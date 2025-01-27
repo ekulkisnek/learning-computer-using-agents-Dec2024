@@ -1,0 +1,33 @@
+Research Engineer / Research Scientist, Computer-Using Agent
+Post-training - San Francisco
+Apply now(opens in a new window)
+About the Team
+
+The Computer-Using Agent team is responsible for developing and deploying computer-using agents—agents that operate graphical user interface-based tools such as computers and browsers. As the team behind Operator, we collaborate with cross-functional teams at every training and deployment stage to advance the capabilities of these agents. We evaluate and enhance their capabilities holistically, considering aspects such as perception, reasoning, manipulation, long-horizon reliability, safety and more. Combining rigorous research with high-quality engineering across evaluation, data, training, RL environments and shared infrastructures, we aim to create reliable and practical computer-using agents.
+
+ 
+
+About the Role
+
+We’re looking for Research Engineers / Scientists eager to advance the frontier of computer-using agent research.
+
+As a research engineer / scientist, you will accelerate our research agenda by effectively identifying and resolving open questions and technical challenges to achieve research objectives. Collaborating with cross-functional researchers and engineers, you will navigate complex, large-scale infrastructures and adapt to fast-evolving research demands to deliver impactful results.
+
+This role is based in San Francisco, CA. We use a hybrid work model of 3 days in the office per week and offer relocation assistance to new employees.
+
+In this role, you will:
+
+Identify open challenges for developing practical computer-using agents, formalize them into concrete problems and make measurable improvements.
+Own and pursue a research agenda to improve model capability and performance.
+Build and innovate components for developing computer-using agents, including datasets, training infra, modeling, evaluation, RL environments, and tasks.
+Design, implement, test, and debug code across our research stack.
+ 
+
+You might thrive in this role if you:
+
+Are excited about making real-world impact through cutting edge agent research and deployment
+Are a team player, willing to do a variety of tasks that move the team forward.
+Excels in execution, consistently and completing tasks efficiently.
+Enjoy fast-paced, collaborative, and cutting-edge research environments.
+Have strong background in multimodal web agents, computer-using agents, relevant large-scale reinforcement learning or agentic safety research.
+Have strong engineering skills in designing and optimizing large-scale machine learning systems
