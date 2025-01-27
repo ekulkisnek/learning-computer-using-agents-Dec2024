@@ -15,13 +15,18 @@ export function useVisionProcessor(config: VisionProcessorConfig = {
   let mediapipeHands: mediapipe.Hands | null = null;
 
   const initializeModel = async () => {
-    if (!model) {
-      model = await tf.loadLayersModel(config.modelPath);
-    }
-    if (!mediapipeHands) {
-      mediapipeHands = new mediapipe.Hands({
-        locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
-      });
+    try {
+      if (!model) {
+        model = await tf.loadLayersModel(config.modelPath);
+      }
+      if (!mediapipeHands) {
+        mediapipeHands = new mediapipe.Hands({
+          locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+        });
+      }
+    } catch (error) {
+      console.warn('Model initialization failed:', error);
+      // Continue without model - UI will still work but without ML features
     }
   };
 
