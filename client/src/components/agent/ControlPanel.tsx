@@ -30,8 +30,13 @@ export default function ControlPanel() {
   const handleTaskSubmit = () => {
     if (!taskInput.trim() || !socket || !connected) return;
     
-    socket.emit('task_submit', { task: taskInput });
-    setTaskInput('');
+    socket.emit('task_submit', { task: taskInput }, (response: { success: boolean, error?: string }) => {
+      if (response.success) {
+        setTaskInput('');
+      } else {
+        console.error('Task submission failed:', response.error);
+      }
+    });
   };
 
   return (

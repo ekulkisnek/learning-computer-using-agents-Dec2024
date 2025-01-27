@@ -8,7 +8,8 @@ export function useWebSocket() {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const newSocket = io(window.location.origin, {
+    const newSocket = io('http://' + window.location.hostname + ':5000', {
+      path: '/ws',
       transports: ['websocket', 'polling'],
       reconnection: true,
       reconnectionAttempts: Infinity,

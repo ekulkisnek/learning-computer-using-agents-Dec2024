@@ -1,100 +1,41 @@
-import * as tf from '@tensorflow/tfjs';
-import * as mediapipe from '@mediapipe/hands';
-import cv from '@techstark/opencv-js';
+import { useCallback, useEffect, useState } from 'react';
+import { useWebSocket } from '../websocket';
 
-export interface VisionProcessorConfig {
-  confidenceThreshold: number;
-  modelPath: string;
+export interface DetectedObject {
+  bbox: [number, number, number, number];
+  class: string;
+  score: number;
 }
 
-export function useVisionProcessor(config: VisionProcessorConfig = {
-  confidenceThreshold: 0.7,
-  modelPath: '/models/ui-detection'
-}) {
-  let model: tf.LayersModel | null = null;
-  let mediapipeHands: mediapipe.Hands | null = null;
+export function useVisionProcessor() {
+  const { socket, connected } = useWebSocket();
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [detections, setDetections] = useState<DetectedObject[]>([]);
 
-  const initializeModel = async () => {
-    try {
-      if (!model) {
-        model = await tf.loadLayersModel(config.modelPath);
-      }
-      if (!mediapipeHands) {
-        mediapipeHands = new mediapipe.Hands({
-          locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
-        });
-      }
-    } catch (error) {
-      console.warn('Model initialization failed:', error);
-      // Continue without model - UI will still work but without ML features
+  const processFrame = useCallback((frame: ImageData): ImageData => {
+    if (!connected || !socket) {
+      return frame;
     }
-  };
 
-  const preprocessFrame = (imageData: ImageData): tf.Tensor => {
-    const tensor = tf.browser.fromPixels(imageData)
-      .resizeNearestNeighbor([224, 224])
-      .toFloat()
-      .expandDims();
-    return tensor;
-  };
+    socket.emit('frame_data', frame.data);
+    return frame;
+  }, [socket, connected]);
 
-  const detectUIElements = async (tensor: tf.Tensor) => {
-    if (!model) {
-      await initializeModel();
-      if (!model) {
-        console.warn('Model not available - skipping detection');
-        return [];
-      }
-    }
-    const predictions = await model.predict(tensor) as tf.Tensor;
-    const elements = await predictions.array();
-    return elements;
-  };
+  useEffect(() => {
+    if (!socket) return;
 
-  const processFrame = (imageData: ImageData) => {
-    // Convert to OpenCV mat
-    const mat = cv.matFromImageData(imageData);
-    
-    // Preprocess frame
-    const tensor = preprocessFrame(imageData);
-    
-    // Detect UI elements
-    const elements = detectUIElements(tensor);
-    
-    // Process hand gestures
-    if (mediapipeHands) {
-      mediapipeHands.onResults((results) => {
-        if (results.multiHandLandmarks) {
-          results.multiHandLandmarks.forEach(landmarks => {
-            // Draw hand landmarks on mat
-            landmarks.forEach((landmark, index) => {
-              const point = new cv.Point(
-                landmark.x * mat.cols,
-                landmark.y * mat.rows
-              );
-              cv.circle(mat, point, 3, [0, 255, 0, 255], -1);
-            });
-          });
-        }
-      });
-    }
-    
-    // Convert back to ImageData
-    const processed = new ImageData(
-      new Uint8ClampedArray(mat.data),
-      mat.cols,
-      mat.rows
-    );
-    
-    // Clean up
-    mat.delete();
-    tensor.dispose();
-    
-    return processed;
-  };
+    socket.on('frame_processed', (processedData: DetectedObject[]) => {
+      setDetections(processedData);
+    });
+
+    return () => {
+      socket.off('frame_processed');
+    };
+  }, [socket]);
 
   return {
     processFrame,
-    initializeModel
+    isProcessing,
+    detections
   };
 }

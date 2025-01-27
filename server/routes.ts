@@ -30,10 +30,16 @@ export function registerRoutes(app: Express): Server {
       socket.emit('frame_processed', processed);
     });
 
-    socket.on('task_submit', async (data) => {
-      const task = await nlpService.parseTask(data.task);
-      const taskId = await taskQueue.addTask(task);
-      socket.emit('task_added', { id: taskId, ...task, status: 'pending', progress: 0 });
+    socket.on('task_submit', async (data, callback) => {
+      try {
+        const task = await nlpService.parseTask(data.task);
+        const taskId = await taskQueue.addTask(task);
+        socket.emit('task_added', { id: taskId, ...task, status: 'pending', progress: 0 });
+        callback({ success: true });
+      } catch (error) {
+        console.error('Task submission error:', error);
+        callback({ success: false, error: error.message });
+      }
     });
 
     socket.on('agent_toggle', (data) => {

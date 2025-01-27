@@ -15,26 +15,25 @@ export default function TaskQueue() {
   const { socket } = useWebSocket();
 
   useEffect(() => {
-    if (!socket?.connected) return; //Added socket connection check
-    socket.on('task_update', (updatedTask: Task) => {
+    if (!socket?.connected) return;
+
+    socket.on('task_added', (task) => {
+      setTasks(current => [...current, task]);
+    });
+
+    socket.on('task_update', (updatedTask) => {
       setTasks(current =>
-        current.map(task =>
-          task.id === updatedTask.id ? updatedTask : task
-        )
+        current.map(task => task.id === updatedTask.id ? updatedTask : task)
       );
     });
 
-    socket.on('task_added', (newTask: Task) => {
-      setTasks(current => [...current, newTask]);
-    });
-
-    socket.on('task_removed', (taskId: string) => {
+    socket.on('task_removed', (taskId) => {
       setTasks(current => current.filter(task => task.id !== taskId));
     });
 
     return () => {
-      socket.off('task_update');
       socket.off('task_added');
+      socket.off('task_update');
       socket.off('task_removed');
     };
   }, [socket]);
