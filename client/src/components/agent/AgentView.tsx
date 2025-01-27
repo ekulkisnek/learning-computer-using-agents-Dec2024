@@ -1,13 +1,12 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Card } from '@/components/ui/card';
-import { useVisionProcessor } from '@/lib/ml/vision';
-import { useWebSocket } from '@/lib/websocket';
 import { Alert } from '@/components/ui/alert';
+import { useWebSocket } from '@/lib/websocket';
 
 export default function AgentView() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const { processFrame } = useVisionProcessor();
-  const { socket, connected, error } = useWebSocket();
+  const { connected } = useWebSocket();
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!canvasRef.current) return;
@@ -15,34 +14,22 @@ export default function AgentView() {
     const ctx = canvasRef.current.getContext('2d');
     if (!ctx) return;
 
-    let animationFrameId: number;
-    let isRendering = true;
-
-    const render = () => {
-      if (!isRendering) return;
-
-      const frame = ctx.getImageData(0, 0, canvasRef.current!.width, canvasRef.current!.height);
-      const processedFrame = processFrame(frame);
-      ctx.putImageData(processedFrame, 0, 0);
-
-      if (socket && connected) {
-        socket.emit('frame_data', { timestamp: Date.now() });
+    const render = async () => {
+      try {
+        const frame = ctx.getImageData(0, 0, canvasRef.current!.width, canvasRef.current!.height);
+        ctx.putImageData(frame, 0, 0);
+        requestAnimationFrame(render);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
+        console.error('Render error:', err);
       }
-
-      animationFrameId = requestAnimationFrame(render);
     };
 
     render();
-
     return () => {
-      isRendering = false;
-      cancelAnimationFrame(animationFrameId);
+      setError(null);
     };
-  }, [processFrame, socket, connected]);
-
-  if (error) {
-    return <Alert variant="destructive">WebSocket Error: {error.message}</Alert>;
-  }
+  }, []);
 
   return (
     <div className="space-y-4">
@@ -56,21 +43,11 @@ export default function AgentView() {
         />
       </Card>
       {!connected && (
-        <Alert>Connecting to server...</Alert>
+        <Alert variant="warning">Connecting to server...</Alert>
+      )}
+      {error && (
+        <Alert variant="destructive">{error}</Alert>
       )}
     </div>
   );
-}
-
-const processFrame = (frame: any) => {
-  try {
-    if (!cv2?.Mat) {
-      console.warn('OpenCV not initialized');
-      return frame;
-    }
-    return new cv2.Mat(frame);
-  } catch (err) {
-    console.error('Frame processing error:', err);
-    return frame;
-  }
 }

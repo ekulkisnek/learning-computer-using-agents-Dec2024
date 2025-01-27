@@ -42,15 +42,14 @@ app.use((req, res, next) => {
 (async () => {
   const httpServer = new HttpServer(app); // Create an HTTP server
   const server = registerRoutes(app);
-  const io = new SocketServer(httpServer, { // Initialize Socket.IO
-    path: '/ws',
-    transports: ['websocket'],
+  const io = new SocketServer(httpServer, {
     cors: {
       origin: '*',
       methods: ['GET', 'POST']
     },
-    pingTimeout: 60000,
-    pingInterval: 25000
+    transports: ['websocket', 'polling'],
+    pingTimeout: 30000,
+    pingInterval: 10000
   });
 
 
