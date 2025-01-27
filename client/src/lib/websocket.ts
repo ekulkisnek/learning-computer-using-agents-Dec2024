@@ -10,27 +10,35 @@ export function useWebSocket() {
   useEffect(() => {
     const newSocket = io({
       path: '/ws',
-      transports: ['websocket']
+      transports: ['websocket'],
+      reconnection: true,
+      reconnectionAttempts: 5,
+      reconnectionDelay: 1000,
     });
 
     newSocket.on('connect', () => {
+      console.log('WebSocket connected');
+      setSocket(newSocket);
       setConnected(true);
       setError(null);
     });
 
     newSocket.on('connect_error', (err) => {
+      console.error('WebSocket connection error:', err);
       setError(err);
       setConnected(false);
     });
 
     newSocket.on('disconnect', () => {
+      console.log('WebSocket disconnected');
       setConnected(false);
     });
 
-    setSocket(newSocket);
-
     return () => {
-      newSocket.close();
+      if (newSocket) {
+        console.log('Cleaning up WebSocket connection');
+        newSocket.close();
+      }
     };
   }, []);
 

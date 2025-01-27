@@ -11,14 +11,17 @@ export default function AgentView() {
   const { socket, connected, error } = useWebSocket();
 
   useEffect(() => {
-    if (!canvasRef.current || !socket || !connected) return;
-
+    if (!canvasRef.current) return;
+    
     const ctx = canvasRef.current.getContext('2d');
     if (!ctx) return;
 
     let animationFrameId: number;
+    let isRendering = true;
 
     const render = () => {
+      if (!isRendering) return;
+      
       const frame = ctx.getImageData(0, 0, canvasRef.current!.width, canvasRef.current!.height);
       const processedFrame = processFrame(frame);
       ctx.putImageData(processedFrame, 0, 0);
@@ -33,6 +36,7 @@ export default function AgentView() {
     render();
 
     return () => {
+      isRendering = false;
       cancelAnimationFrame(animationFrameId);
     };
   }, [processFrame, socket, connected]);
