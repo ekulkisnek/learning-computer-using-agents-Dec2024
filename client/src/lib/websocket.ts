@@ -1,4 +1,3 @@
-
 import { io, Socket } from 'socket.io-client';
 import { useEffect, useState } from 'react';
 
@@ -8,12 +7,11 @@ export function useWebSocket() {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const newSocket = io({
-      path: '/ws',
-      transports: ['websocket'],
+    const newSocket = io('/', { // Changed to '/' assuming the server is at the root path
+      transports: ['websocket', 'polling'], // Added polling for fallback
       reconnection: true,
-      reconnectionAttempts: 5,
       reconnectionDelay: 1000,
+      reconnectionAttempts: 5,
     });
 
     newSocket.on('connect', () => {

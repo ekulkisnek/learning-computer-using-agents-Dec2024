@@ -15,6 +15,7 @@ export default function PerformanceMetrics() {
   const { socket } = useWebSocket();
 
   useEffect(() => {
+    if (!socket?.connected) return; // Added socket connection check
     socket.on('metrics_update', (newMetric: MetricData) => {
       setMetrics(current => [...current.slice(-50), newMetric]);
     });

@@ -1,4 +1,3 @@
-
 import { useEffect, useRef } from 'react';
 import { Card } from '@/components/ui/card';
 import { useVisionProcessor } from '@/lib/ml/vision';
@@ -12,7 +11,7 @@ export default function AgentView() {
 
   useEffect(() => {
     if (!canvasRef.current) return;
-    
+
     const ctx = canvasRef.current.getContext('2d');
     if (!ctx) return;
 
@@ -21,7 +20,7 @@ export default function AgentView() {
 
     const render = () => {
       if (!isRendering) return;
-      
+
       const frame = ctx.getImageData(0, 0, canvasRef.current!.width, canvasRef.current!.height);
       const processedFrame = processFrame(frame);
       ctx.putImageData(processedFrame, 0, 0);
@@ -61,4 +60,17 @@ export default function AgentView() {
       )}
     </div>
   );
+}
+
+const processFrame = (frame: any) => {
+  try {
+    if (!cv2?.Mat) {
+      console.warn('OpenCV not initialized');
+      return frame;
+    }
+    return new cv2.Mat(frame);
+  } catch (err) {
+    console.error('Frame processing error:', err);
+    return frame;
+  }
 }

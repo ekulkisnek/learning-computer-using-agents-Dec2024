@@ -15,6 +15,7 @@ export default function TaskQueue() {
   const { socket } = useWebSocket();
 
   useEffect(() => {
+    if (!socket?.connected) return; //Added socket connection check
     socket.on('task_update', (updatedTask: Task) => {
       setTasks(current =>
         current.map(task =>
