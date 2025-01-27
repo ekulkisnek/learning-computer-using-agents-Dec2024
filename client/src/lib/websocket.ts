@@ -1,37 +1,23 @@
-
-import { io, Socket } from 'socket.io-client';
-import { useEffect, useState } from 'react';
+import { io } from 'socket.io-client';
+import { useState, useEffect } from 'react';
 
 export function useWebSocket() {
-  const [socket, setSocket] = useState<Socket | null>(null);
+  const [socket, setSocket] = useState<any>(null);
   const [connected, setConnected] = useState(false);
-  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const newSocket = io({
-      path: '/socket.io',
-      transports: ['websocket', 'polling'],
-      reconnection: true,
-      reconnectionAttempts: Infinity,
-      reconnectionDelay: 1000,
-      timeout: 20000
+    const newSocket = io(window.location.origin, {
+      transports: ['websocket']
     });
 
     newSocket.on('connect', () => {
-      console.log('WebSocket connected');
-      setSocket(newSocket);
+      console.log('Connected to server');
       setConnected(true);
-      setError(null);
+      setSocket(newSocket);
     });
 
     newSocket.on('disconnect', () => {
-      console.log('WebSocket disconnected');
-      setConnected(false);
-    });
-
-    newSocket.on('connect_error', (err) => {
-      console.error('WebSocket connection error:', err);
-      setError(err);
+      console.log('Disconnected from server');
       setConnected(false);
     });
 
@@ -40,5 +26,5 @@ export function useWebSocket() {
     };
   }, []);
 
-  return { socket, connected, error };
+  return { socket, connected };
 }

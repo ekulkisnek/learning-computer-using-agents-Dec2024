@@ -1,66 +1,31 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
-import { Server as SocketServer } from "socket.io";
-import { VisionService } from "./services/ml/visionService";
-import { NLPService } from "./services/ml/nlpService";
+import { createServer } from "http";
+import { Server } from "socket.io";
 import { TaskQueueService } from "./services/taskQueue";
-import { MonitoringService } from "./services/monitoring";
 
-export function registerRoutes(app: Express): Server {
+export function registerRoutes(app: Express) {
   const httpServer = createServer(app);
-  
-  // Initialize WebSocket server
-  const io = new SocketServer(httpServer, {
-    path: '/ws',
-    transports: ['websocket']
+  const io = new Server(httpServer, {
+    cors: {
+      origin: "*",
+      methods: ["GET", "POST"]
+    }
   });
 
-  // Initialize services
-  const visionService = new VisionService();
-  const nlpService = new NLPService();
   const taskQueue = new TaskQueueService();
-  const monitoring = new MonitoringService();
 
-  // WebSocket connection handling
-  io.on('connection', (socket) => {
-    console.log('Client connected');
+  io.on("connection", (socket) => {
+    console.log("Client connected");
 
-    socket.on('frame_data', async (data) => {
-      const processed = await visionService.processFrame(data);
-      socket.emit('frame_processed', processed);
+    socket.on("task_submit", (data) => {
+      console.log("Task received:", data);
+      const taskId = taskQueue.addTask(data.task);
+      socket.emit("task_added", { id: taskId, task: data.task });
     });
 
-    socket.on('task_submit', async (data, callback) => {
-      try {
-        const task = await nlpService.parseTask(data.task);
-        const taskId = await taskQueue.addTask(task);
-        socket.emit('task_added', { id: taskId, ...task, status: 'pending', progress: 0 });
-        callback({ success: true });
-      } catch (error) {
-        console.error('Task submission error:', error);
-        callback({ success: false, error: error.message });
-      }
+    socket.on("disconnect", () => {
+      console.log("Client disconnected");
     });
-
-    socket.on('agent_toggle', (data) => {
-      taskQueue.setEnabled(data.enabled);
-    });
-
-    socket.on('confidence_update', (data) => {
-      visionService.setConfidenceThreshold(data.threshold);
-    });
-
-    socket.on('disconnect', () => {
-      console.log('Client disconnected');
-    });
-  });
-
-  // Start monitoring service
-  monitoring.start(io);
-
-  // API routes
-  app.get('/api/health', (_req, res) => {
-    res.json({ status: 'ok' });
   });
 
   return httpServer;
