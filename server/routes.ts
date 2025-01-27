@@ -1,10 +1,12 @@
+
 import type { Express } from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { TaskQueueService } from "./services/taskQueue";
+import cors from "cors";
 
 export function registerRoutes(app: Express) {
   const httpServer = createServer(app);
+  
   const io = new Server(httpServer, {
     cors: {
       origin: "*",
@@ -12,15 +14,15 @@ export function registerRoutes(app: Express) {
     }
   });
 
-  const taskQueue = new TaskQueueService();
+  app.use(cors());
 
   io.on("connection", (socket) => {
     console.log("Client connected");
 
     socket.on("task_submit", (data) => {
       console.log("Task received:", data);
-      const taskId = taskQueue.addTask(data.task);
-      socket.emit("task_added", { id: taskId, task: data.task });
+      // Acknowledge receipt
+      socket.emit("task_added", { id: Date.now().toString(), task: data.task });
     });
 
     socket.on("disconnect", () => {
