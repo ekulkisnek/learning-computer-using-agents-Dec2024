@@ -1,0 +1,288 @@
+Uncaught (in promise) DOMException: An invalid or illegal string was specified
+    setupWebSocket client:535
+    fallback client:508
+    setupWebSocket client:551
+client:535
+[vite] connecting... client:495:9
+Download the React DevTools for a better development experience: https://reactjs.org/link/react-devtools chunk-WERSD76P.js:21551:25
+Uncaught TypeError: cv2.Mat is not a constructor
+    node_modules @techstark_opencv-js.js:7785
+    processFrame vision.ts:56
+    render AgentView.tsx:26
+    AgentView AgentView.tsx:36
+    React 13
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    __require chunk-4MBMRILA.js:11
+    js index.js:6
+    __require chunk-4MBMRILA.js:11
+    React 2
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    <anonymous> react-dom_client.js:38
+@techstark_opencv-js.js:7785:23
+Uncaught TypeError: socket is null
+    TaskQueue TaskQueue.tsx:18
+    React 13
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    __require chunk-4MBMRILA.js:11
+    js index.js:6
+    __require chunk-4MBMRILA.js:11
+    React 2
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    <anonymous> react-dom_client.js:38
+TaskQueue.tsx:27:5
+Uncaught TypeError: socket is null
+    PerformanceMetrics PerformanceMetrics.tsx:18
+    React 13
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    __require chunk-4MBMRILA.js:11
+    js index.js:6
+    __require chunk-4MBMRILA.js:11
+    React 2
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    <anonymous> react-dom_client.js:38
+PerformanceMetrics.tsx:27:5
+Cleaning up WebSocket connection websocket.ts:32:17
+Firefox can’t establish a connection to the server at wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket. socket__io-client.js:1059:77
+Cleaning up WebSocket connection websocket.ts:32:17
+Firefox can’t establish a connection to the server at wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket. socket__io-client.js:1059:77
+Cleaning up WebSocket connection websocket.ts:32:17
+Firefox can’t establish a connection to the server at wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket. socket__io-client.js:1059:77
+Cleaning up WebSocket connection websocket.ts:32:17
+Firefox can’t establish a connection to the server at wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket. socket__io-client.js:1059:77
+Uncaught TypeError: cv2.Mat is not a constructor
+    node_modules @techstark_opencv-js.js:7785
+    processFrame vision.ts:56
+    render AgentView.tsx:26
+    AgentView AgentView.tsx:36
+    React 12
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    __require chunk-4MBMRILA.js:11
+    js index.js:6
+    __require chunk-4MBMRILA.js:11
+    React 2
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    <anonymous> react-dom_client.js:38
+@techstark_opencv-js.js:7785:23
+Uncaught TypeError: socket is null
+    TaskQueue TaskQueue.tsx:18
+    React 12
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    __require chunk-4MBMRILA.js:11
+    js index.js:6
+    __require chunk-4MBMRILA.js:11
+    React 2
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    <anonymous> react-dom_client.js:38
+TaskQueue.tsx:27:5
+Uncaught TypeError: socket is null
+    PerformanceMetrics PerformanceMetrics.tsx:18
+    React 12
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    __require chunk-4MBMRILA.js:11
+    js index.js:6
+    __require chunk-4MBMRILA.js:11
+    React 2
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    <anonymous> react-dom_client.js:38
+PerformanceMetrics.tsx:27:5
+The above error occurred in the <AgentView> component:
+
+AgentView@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/agent/AgentView.tsx:25:27
+div
+_c9@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:106:9
+div
+_c@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:20:8
+div
+div
+div
+Dashboard
+Route@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:323:13
+Switch@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:379:14
+Router
+QueryClientProvider@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=2a0204bf:2804:27
+App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. chunk-WERSD76P.js:14032:23
+The above error occurred in the <TaskQueue> component:
+
+TaskQueue@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/agent/TaskQueue.tsx:24:37
+div
+_c9@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:106:9
+div
+_c@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:20:8
+div
+div
+div
+Dashboard
+Route@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:323:13
+Switch@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:379:14
+Router
+QueryClientProvider@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=2a0204bf:2804:27
+App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. chunk-WERSD76P.js:14032:23
+The above error occurred in the <PerformanceMetrics> component:
+
+PerformanceMetrics@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/monitoring/PerformanceMetrics.tsx:24:41
+div
+_c9@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:106:9
+div
+_c@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:20:8
+div
+div
+div
+Dashboard
+Route@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:323:13
+Switch@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:379:14
+Router
+QueryClientProvider@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=2a0204bf:2804:27
+App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. chunk-WERSD76P.js:14032:23
+The above error occurred in the <AgentView> component:
+
+AgentView@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/agent/AgentView.tsx:25:27
+div
+_c9@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:106:9
+div
+_c@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:20:8
+div
+div
+div
+Dashboard
+Route@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:323:13
+Switch@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:379:14
+Router
+QueryClientProvider@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=2a0204bf:2804:27
+App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. chunk-WERSD76P.js:14032:23
+The above error occurred in the <TaskQueue> component:
+
+TaskQueue@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/agent/TaskQueue.tsx:24:37
+div
+_c9@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:106:9
+div
+_c@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:20:8
+div
+div
+div
+Dashboard
+Route@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:323:13
+Switch@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:379:14
+Router
+QueryClientProvider@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=2a0204bf:2804:27
+App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. chunk-WERSD76P.js:14032:23
+The above error occurred in the <PerformanceMetrics> component:
+
+PerformanceMetrics@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/monitoring/PerformanceMetrics.tsx:24:41
+div
+_c9@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:106:9
+div
+_c@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/src/components/ui/card.tsx:20:8
+div
+div
+div
+Dashboard
+Route@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:323:13
+Switch@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=2a0204bf:379:14
+Router
+QueryClientProvider@https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=2a0204bf:2804:27
+App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries. chunk-WERSD76P.js:14032:23
+Uncaught TypeError: cv2.Mat is not a constructor
+    node_modules @techstark_opencv-js.js:7785
+    processFrame vision.ts:56
+    render AgentView.tsx:26
+    AgentView AgentView.tsx:36
+    React 13
+    workLoop scheduler.development.js:266
+    flushWork scheduler.development.js:239
+    performWorkUntilDeadline scheduler.development.js:533
+    js scheduler.development.js:571
+    js scheduler.development.js:633
+    __require chunk-4MBMRILA.js:11
+    js index.js:6
+    __require chunk-4MBMRILA.js:11
+    React 2
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    js React
+    __require chunk-4MBMRILA.js:11
+    <anonymous> react-dom_client.js:38
+@techstark_opencv-js.js:7785:23
+Cleaning up WebSocket connection websocket.ts:32:17
+Firefox can’t establish a connection to the server at wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket. socket__io-client.js:1059:77
+Cleaning up WebSocket connection websocket.ts:32:17
+Firefox can’t establish a connection to the server at wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket. socket__io-client.js:1059:77
+Cleaning up WebSocket connection websocket.ts:32:17
+Firefox can’t establish a connection to the server at wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket. socket__io-client.js:1059:77
+Cleaning up WebSocket connection websocket.ts:32:17
+Firefox can’t establish a connection to the server at wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket. socket__io-client.js:1059:77
+The connection to wss://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/ws/?EIO=4&transport=websocket was interrupted while the page was loading. 8 socket__io-client.js:1059:77
+Source map error: Error: URL constructor:  is not a valid URL.
+Stack in the worker:resolveSourceMapURL@resource://devtools/client/shared/source-map-loader/utils/fetchSourceMap.js:56:22
+getOriginalURLs@resource://devtools/client/shared/source-map-loader/source-map.js:73:24
+workerHandler/</<@resource://devtools/client/shared/worker-utils.js:115:52
+workerHandler/<@resource://devtools/client/shared/worker-utils.js:113:13
+
+Resource URL: wasm:https://0c65053d-1428-4070-b44e-c425578479ff-00-2nskb1jialhlm.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tensorflow_tfjs.js?v=2a0204bf%20line%2017%20%3E%20WebAssembly.Module
+Source Map URL: null
