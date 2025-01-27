@@ -1,6 +1,6 @@
 
-import { useEffect, useState } from 'react';
 import { io, Socket } from 'socket.io-client';
+import { useEffect, useState } from 'react';
 
 export function useWebSocket() {
   const [socket, setSocket] = useState<Socket | null>(null);
@@ -8,28 +8,22 @@ export function useWebSocket() {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
-    const newSocket = io(window.location.origin, {
+    const newSocket = io({
       path: '/ws',
-      transports: ['websocket'],
-      reconnection: true,
-      reconnectionAttempts: 5,
-      reconnectionDelay: 1000
+      transports: ['websocket']
     });
 
     newSocket.on('connect', () => {
-      console.log('WebSocket connected');
       setConnected(true);
       setError(null);
     });
 
-    newSocket.on('disconnect', () => {
-      console.log('WebSocket disconnected');
+    newSocket.on('connect_error', (err) => {
+      setError(err);
       setConnected(false);
     });
 
-    newSocket.on('connect_error', (error: Error) => {
-      console.error('WebSocket connection error:', error);
-      setError(error);
+    newSocket.on('disconnect', () => {
       setConnected(false);
     });
 
